@@ -1,0 +1,75 @@
+[project]
+name = "dj_magister"
+version = "0.0.2"
+description = "Django application designed to provide comprehensive access control"
+authors = [{ name = "Adel ESMAIRI", email = "esmairi.github@gmail.com" }]
+dependencies = ["django"]
+keywords = ["dj_magister", "magister", "authorization", "access", "control", "permission", "django"]
+readme = "README.md"
+requires-python = ">=3.12"
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Intended Audience :: Developers",
+    "Topic :: Software Development :: Libraries",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3.12",
+    "Operating System :: OS Independent"
+]
+
+[project.urls]
+Homepage = "https://github.com/esmairi/dj_magister"
+Repository = "https://github.com/esmairi/dj_magister"
+
+[tool.setuptools]
+packages = [
+    "dj_magister",
+    "dj_magister.core",
+    "dj_magister.core.check_permission",
+    "dj_magister.core.lookup_object_relation",
+    "dj_magister.core.lookup_resources",
+    "dj_magister.core.lookup_subjects",
+    "dj_magister.core.relationship_writer",
+    "dj_magister.management.commands",
+    "dj_magister.migrations",
+]
+
+
+[build-system]
+requires = ["setuptools", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[tool.black]
+line-length = 88
+target-version = ["py312"]
+
+[tool.isort]
+profile = "black"
+
+[project.optional-dependencies]
+dev = [
+    "build",
+    "twine",
+    "pytest",
+    "pytest-django",
+    "pre-commit",
+    "black",
+    "flake8",
+    "mypy",
+    "django-stubs"
+]
+
+
+[tool.pytest.ini_options]
+DJANGO_SETTINGS_MODULE = "tests.settings"
+python_files = ["test_*.py"]
+
+
+[tool.mypy]
+strict = true
+ignore_missing_imports = true
+disallow_untyped_defs = true
+disallow_untyped_calls = true
+disallow_untyped_decorators = false
+
+[tool.django-stubs]
+django_settings_module = "tests.settings"
